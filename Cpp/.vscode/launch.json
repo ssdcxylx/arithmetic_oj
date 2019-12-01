@@ -1,0 +1,21 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(lldb) Launch", // 配置名称，之后会出现再调试窗口的启动配置上
+            "type": "cppdbg", //  配置类型
+            "request": "launch", // 请求配置类型，可以设置为 launch(启动) 或者 attach(附加
+            "program": "${workspaceFolder}/a.out", // 进行调试的程序的位置(此处在当前文件夹下的a.out可执行文件)
+            "args": [], 
+            "stopAtEntry": false, // 设置为true时,程序将会暂停在程序的入口中
+            "cwd": "${workspaceFolder}", // 当前调试所在的路径
+            "environment": [],
+            "externalConsole": true, // 调试是否显示控制台窗口,true即显示控制台
+            "MIMode": "lldb",
+            "preLaunchTask": "build",
+        }
+    ]
+}
