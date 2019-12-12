@@ -1,9 +1,11 @@
-# -*- coding: utf-8 -*-
-# @time       : 2019-10-19 22:43
-# @author     : ssdcxy
-# @email      : 18379190862@163.com
-# @file       : P0010.py
-# @description: 正则表达式匹配
+# -*- coding:utf-8 -*-
+# Author: ssdcxy
+# Date: 2019-10-24 22:16:58
+# LastEditTime: 2019-12-10 20:15:08
+# LastEditors: ssdcxy
+# Description: 正则表达式匹配
+# FilePath: /arithmetic_oj/LeetCode/P0010.py
+
 
 
 class Solution:
@@ -35,6 +37,7 @@ def stringToString(input):
 def main():
     import sys
     import io
+
     def readlines():
         for line in io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8'):
             yield line.strip('\n')
@@ -43,13 +46,13 @@ def main():
     while True:
         try:
             line = next(lines)
-            s = line;
+            s = line
             line = next(lines)
-            p = line;
+            p = line
 
             ret = Solution().isMatch(s, p)
 
-            out = (ret);
+            out = (ret)
             print(out)
         except StopIteration:
             break

@@ -1,11 +1,14 @@
-# -*- coding: utf-8 -*-
-# @time       : 2019-10-24 22:24
-# @author     : ssdcxy
-# @email      : 18379190862@163.com
-# @file       : P0344.py
-# @description: 反转字符串
+# -*- coding:utf-8 -*-
+# Author: ssdcxy
+# Date: 2019-10-24 22:43:28
+# LastEditTime: 2019-12-10 20:24:50
+# LastEditors: ssdcxy
+# Description: 反转字符串
+# FilePath: /arithmetic_oj/LeetCode/P0344.py
+
 
 from typing import List
+
 
 class Solution:
     def reverseString(self, s: List[str]) -> None:
@@ -20,6 +23,7 @@ def stringToString(input):
 def main():
     import sys
     import io
+
     def readlines():
         for line in io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8'):
             yield line.strip('\n')
@@ -32,7 +36,7 @@ def main():
 
             ret = Solution().reverseString(s)
 
-            out = (ret);
+            out = (ret)
             print(out)
         except StopIteration:
             break

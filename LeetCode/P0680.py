@@ -1,30 +1,28 @@
-# -*- coding: utf-8 -*-
-# @time       : 7/12/2019 10:35 下午
-# @author     : ssdcxy
-# @email      : 18379190862@163.com
-# @description: 
+# -*- coding:utf-8 -*-
+# Author: ssdcxy
+# Date: 2019-12-07 22:35:55
+# LastEditTime: 2019-12-10 20:31:01
+# LastEditors: ssdcxy
+# Description: 验证回文字符串 Ⅱ
+# FilePath: /arithmetic_oj/LeetCode/P0680.py
 
 
 class Solution:
-    def validPalindrome(self, s: str) -> bool:
-        low, high = 0, len(s) - 1
-        flag = True
+    def valid(self, s: str, low: int, high: int, flag: bool) -> bool:
         while low <= high:
             if s[low] == s[high]:
                 low += 1
                 high -= 1
             else:
                 if flag:
-                    if low < high and s[low+1] == s[high]:
-                        low += 2
-                        high -= 1
-                    if low < high and s[low] == s[high-1]:
-                        low += 1
-                        high -= 2
-                    flag = False
+                    return self.valid(s, low+1, high, False) or self.valid(s, low, high-1, False)
                 else:
                     return False
         return True
+
+    def validPalindrome(self, s: str) -> bool:
+        low, high = 0, len(s) - 1
+        return self.valid(s, low, high, True)
 
 
 def stringToString(input):
@@ -34,6 +32,7 @@ def stringToString(input):
 def main():
     import sys
     import io
+
     def readlines():
         for line in io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8'):
             yield line.strip('\n')
@@ -42,11 +41,15 @@ def main():
     while True:
         try:
             line = next(lines)
-            s = stringToString(line);
+            s = stringToString(line)
 
             ret = Solution().validPalindrome(s)
 
-            out = (ret);
+            out = (ret)
             print(out)
         except StopIteration:
             break
+
+
+if __name__ == '__main__':
+    main()

@@ -1,9 +1,10 @@
-# -*- coding: utf-8 -*-
-# @time       : 2019-10-16 22:59
-# @author     : ssdcxy
-# @email      : 18379190862@163.com
-# @file       : P0006.py
-# @description: Z字形变换
+# -*- coding:utf-8 -*-
+# Author: ssdcxy
+# Date: 2019-10-24 22:15:52
+# LastEditTime: 2019-12-10 20:14:20
+# LastEditors: ssdcxy
+# Description: Z字形变换
+# FilePath: /arithmetic_oj/LeetCode/P0006.py
 
 
 class Solution:
@@ -37,7 +38,6 @@ class Solution:
         return z
 
 
-
 def stringToString(input):
     return input[1:-1].decode('string_escape')
 
@@ -45,6 +45,7 @@ def stringToString(input):
 def main():
     import sys
     import io
+
     def readlines():
         for line in io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8'):
             yield line.strip('\n')
@@ -55,11 +56,11 @@ def main():
             line = next(lines)
             s = line
             line = next(lines)
-            numRows = int(line);
+            numRows = int(line)
 
             ret = Solution().convert(s, numRows)
 
-            out = (ret);
+            out = (ret)
             print(out)
         except StopIteration:
             break

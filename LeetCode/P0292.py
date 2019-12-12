@@ -1,9 +1,10 @@
-# -*- coding: utf-8 -*-
-# @time       : 2019-10-24 22:44
-# @author     : ssdcxy
-# @email      : 18379190862@163.com
-# @file       : P0292.py
-# @description: Nim游戏
+# -*- coding:utf-8 -*-
+# Author: ssdcxy
+# Date: 2019-10-24 23:36:55
+# LastEditTime: 2019-12-10 20:24:34
+# LastEditors: ssdcxy
+# Description: Nim 游戏
+# FilePath: /arithmetic_oj/LeetCode/P0292.py
 
 
 class Solution:
@@ -13,10 +14,10 @@ class Solution:
         return True
 
 
-
 def main():
     import sys
     import io
+
     def readlines():
         for line in io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8'):
             yield line.strip('\n')
@@ -25,11 +26,11 @@ def main():
     while True:
         try:
             line = next(lines)
-            n = int(line);
+            n = int(line)
 
             ret = Solution().canWinNim(n)
 
-            out = (ret);
+            out = (ret)
             print(out)
         except StopIteration:
             break

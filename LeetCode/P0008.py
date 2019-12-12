@@ -1,9 +1,10 @@
-# -*- coding: utf-8 -*-
-# @time       : 2019-10-19 21:58
-# @author     : ssdcxy
-# @email      : 18379190862@163.com
-# @file       : P0008.py
-# @description: 字符串转换整数
+# -*- coding:utf-8 -*-
+# Author: ssdcxy
+# Date: 2019-10-24 22:16:22
+# LastEditTime: 2019-12-10 20:14:39
+# LastEditors: ssdcxy
+# Description: 字符串转换整数
+# FilePath: /arithmetic_oj/LeetCode/P0008.py
 
 
 class Solution:
@@ -39,6 +40,7 @@ def stringToString(input):
 def main():
     import sys
     import io
+
     def readlines():
         for line in io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8'):
             yield line.strip('\n')
@@ -51,7 +53,7 @@ def main():
 
             ret = Solution().myAtoi(_str)
 
-            out = str(ret);
+            out = str(ret)
             print(out)
         except StopIteration:
             break

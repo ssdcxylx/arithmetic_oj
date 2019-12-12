@@ -1,25 +1,24 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
-# Date: 2019-12-08 23:24:31
-# LastEditTime: 2019-12-10 20:28:11
+# Date: 2019-12-10 21:42:33
+# LastEditTime: 2019-12-10 21:56:12
 # LastEditors: ssdcxy
-# Description: 根据字符出现频率排序
-# FilePath: /arithmetic_oj/LeetCode/P0451.py
+# Description:  判断子序列
+# FilePath: /arithmetic_oj/LeetCode/P0392.py
 
 
 class Solution:
-    def frequencySort(self, s: str) -> str:
-        import collections
-        counter = collections.Counter(s)
-        lst = sorted(counter.keys(), key=counter.get, reverse=True)
-        res = ""
-        for i in lst:
-            res += i * counter.get(i)
-        return res
+    def isSubsequence(self, s: str, t: str) -> bool:
+        index = -1
+        for c in s:
+            index = t.find(c, index+1)
+            if index == -1:
+                return False
+        return True
 
 
 def stringToString(input):
-    return input[1:-1]
+    return input[1: -1]
 
 
 def main():
@@ -35,8 +34,10 @@ def main():
         try:
             line = next(lines)
             s = stringToString(line)
+            line = next(lines)
+            t = stringToString(line)
 
-            ret = Solution().frequencySort(s)
+            ret = Solution().isSubsequence(s, t)
 
             out = (ret)
             print(out)

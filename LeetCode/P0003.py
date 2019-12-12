@@ -1,9 +1,10 @@
-# -*- coding: utf-8 -*-
-# @time       : 2019-10-16 09:10
-# @author     : ssdcxy
-# @email      : 18379190862@163.com
-# @file       : P0003.py
-# @description: 无重复字符的的最长子串
+# -*- coding:utf-8 -*-
+# Author: ssdcxy
+# Date: 2019-10-16 10:10:19
+# LastEditTime: 2019-12-10 20:13:47
+# LastEditors: ssdcxy
+# Description: 无重复字符的的最长子串
+# FilePath: /arithmetic_oj/LeetCode/P0003.py
 
 
 class Solution:
@@ -33,6 +34,7 @@ def stringToString(input):
 def main():
     import sys
     import io
+
     def readlines():
         for line in io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8'):
             yield line.strip('\n')
@@ -45,7 +47,7 @@ def main():
 
             ret = Solution().lengthOfLongestSubstring(s)
 
-            out = str(ret);
+            out = str(ret)
             print(out)
         except StopIteration:
             break

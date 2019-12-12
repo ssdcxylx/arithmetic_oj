@@ -1,9 +1,10 @@
-# -*- coding: utf-8 -*-
-# @time       : 2019-10-24 22:14
-# @author     : ssdcxy
-# @email      : 18379190862@163.com
-# @file       : P0557.py
-# @description: 反转字符串中的单词3
+# -*- coding:utf-8 -*-
+# Author: ssdcxy
+# Date: 2019-10-24 22:22:01
+# LastEditTime: 2019-12-10 20:30:18
+# LastEditors: ssdcxy
+# Description: 反转字符串中的单词3
+# FilePath: /arithmetic_oj/LeetCode/P0557.py
 
 
 class Solution:
@@ -23,6 +24,7 @@ def stringToString(input):
 def main():
     import sys
     import io
+
     def readlines():
         for line in io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8'):
             yield line.strip('\n')
@@ -35,7 +37,7 @@ def main():
 
             ret = Solution().reverseWords(s)
 
-            out = (ret);
+            out = (ret)
             print(out)
         except StopIteration:
             break

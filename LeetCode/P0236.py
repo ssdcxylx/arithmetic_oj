@@ -1,12 +1,12 @@
-# -*- coding: utf-8 -*-
-# @time       : 2019-10-25 00:02
-# @author     : ssdcxy
-# @email      : 18379190862@163.com
-# @file       : P0236.py
-# @description: 
+# -*- coding:utf-8 -*-
+# Author: ssdcxy
+# Date: 2019-12-08 21:31:19
+# LastEditTime: 2019-12-10 20:22:41
+# LastEditors: ssdcxy
+# Description: 二叉树的最近公共祖先
+# FilePath: /arithmetic_oj/LeetCode/P0236.py
 
 
-# Definition for a binary tree node.
 class TreeNode:
     def __init__(self, x):
         self.val = x
@@ -21,14 +21,14 @@ class Solution:
         self.dfs(root, p, q)
         return self.res
 
-
     def dfs(self, root, p, q):
         if not root:
             return 0
         left = self.dfs(root.left, p, q)
         right = self.dfs(root.right, p, q)
         mid = (root == p or root == q)
-        if left + right + mid > 1: self.res = root
+        if left + right + mid > 1:
+            self.res = root
         return left or right or mid
 
 
@@ -104,6 +104,7 @@ def treeNodeToString(root):
 def main():
     import sys
     import io
+
     def readlines():
         for line in io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8'):
             yield line.strip('\n')
@@ -112,15 +113,15 @@ def main():
     while True:
         try:
             line = next(lines)
-            root = stringToTreeNode(line);
+            root = stringToTreeNode(line)
             line = next(lines)
-            p = stringtoNode(root, line);
+            p = stringtoNode(root, line)
             line = next(lines)
-            q = stringtoNode(root, line);
+            q = stringtoNode(root, line)
 
             ret = Solution().lowestCommonAncestor(root, p, q)
 
-            out = treeNodeToString(ret);
+            out = treeNodeToString(ret)
             print(out)
         except StopIteration:
             break

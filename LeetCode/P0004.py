@@ -1,9 +1,10 @@
-# -*- coding: utf-8 -*-
-# @time       : 2019-10-16 22:32
-# @author     : ssdcxy
-# @email      : 18379190862@163.com
-# @file       : P0004.py
-# @description: 寻找两个有序数组的中位数
+# -*- coding:utf-8 -*-
+# Author: ssdcxy
+# Date: 2019-10-24 22:15:17
+# LastEditTime: 2019-12-10 20:14:07
+# LastEditors: ssdcxy
+# Description: 寻找两个有序数组的中位数
+# FilePath: /arithmetic_oj/LeetCode/P0004.py
 
 from typing import List
 import json
@@ -39,6 +40,7 @@ def stringToIntegerList(input):
 def main():
     import sys
     import io
+
     def readlines():
         for line in io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8'):
             yield line.strip('\n')
@@ -47,13 +49,13 @@ def main():
     while True:
         try:
             line = next(lines)
-            nums1 = stringToIntegerList(line);
+            nums1 = stringToIntegerList(line)
             line = next(lines)
-            nums2 = stringToIntegerList(line);
+            nums2 = stringToIntegerList(line)
 
             ret = Solution().findMedianSortedArrays(nums1, nums2)
 
-            out = str(ret);
+            out = str(ret)
             print(out)
         except StopIteration:
             break

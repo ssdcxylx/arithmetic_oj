@@ -1,9 +1,11 @@
-# -*- coding: utf-8 -*-
-# @time       : 2019-10-24 22:54
-# @author     : ssdcxy
-# @email      : 18379190862@163.com
-# @file       : P0238.py
-# @description: 除自身意外数组的乘积
+# -*- coding:utf-8 -*-
+# Author: ssdcxy
+# Date: 2019-10-24 23:36:55
+# LastEditTime: 2019-12-10 20:24:07
+# LastEditors: ssdcxy
+# Description: 除自身意外数组的乘积
+# FilePath: /arithmetic_oj/LeetCode/P0238.py
+
 
 from typing import List
 import json
@@ -33,6 +35,7 @@ def integerListToString(nums, len_of_list=None):
 def main():
     import sys
     import io
+
     def readlines():
         for line in io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8'):
             yield line.strip('\n')
@@ -41,11 +44,11 @@ def main():
     while True:
         try:
             line = next(lines)
-            nums = stringToIntegerList(line);
+            nums = stringToIntegerList(line)
 
             ret = Solution().productExceptSelf(nums)
 
-            out = integerListToString(ret);
+            out = integerListToString(ret)
             print(out)
         except StopIteration:
             break

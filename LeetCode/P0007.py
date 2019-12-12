@@ -1,9 +1,10 @@
-# -*- coding: utf-8 -*-
-# @time       : 2019-10-16 23:44
-# @author     : ssdcxy
-# @email      : 18379190862@163.com
-# @file       : P0007.py
-# @description: 整数反转
+# -*- coding:utf-8 -*-
+# Author: ssdcxy
+# Date: 2019-10-24 22:16:07
+# LastEditTime: 2019-12-10 20:14:28
+# LastEditors: ssdcxy
+# Description: 整数反转
+# FilePath: /arithmetic_oj/LeetCode/P0007.py
 
 
 class Solution:
@@ -25,11 +26,10 @@ class Solution:
         return x
 
 
-
-
 def main():
     import sys
     import io
+
     def readlines():
         for line in io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8'):
             yield line.strip('\n')
@@ -38,11 +38,11 @@ def main():
     while True:
         try:
             line = next(lines)
-            x = int(line);
+            x = int(line)
 
             ret = Solution().reverse(x)
 
-            out = str(ret);
+            out = str(ret)
             print(out)
         except StopIteration:
             break

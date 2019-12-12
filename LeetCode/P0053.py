@@ -1,27 +1,27 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
-# Date: 2019-12-09 22:55:57
-# LastEditTime: 2019-12-10 20:18:02
+# Date: 2019-12-10 23:33:10
+# LastEditTime: 2019-12-11 01:18:41
 # LastEditors: ssdcxy
-# Description: 买卖股票的最佳时机
-# FilePath: /arithmetic_oj/LeetCode/P0121.py
-
+# Description: 最大子序和
+# FilePath: /arithmetic_oj/LeetCode/P0053.py
 
 import json
 from typing import List
 
 
 class Solution:
-    def maxProfit(self, prices: List[int]) -> int:
-        low, profit = float('inf'), 0
-        for x in prices:
-            if low > x:
-                low = x
+    def maxSubArray(self, nums: List[int]) -> int:
+        result = -float('inf')
+        temp = 0
+        for num in nums:
+            if temp > 0:
+                temp += num
             else:
-                get = x - low
-                if get > profit:
-                    profit = get
-        return profit
+                temp = num
+            if temp > result:
+                result = temp
+        return result
 
 
 def stringToIntegerList(input):
@@ -40,9 +40,9 @@ def main():
     while True:
         try:
             line = next(lines)
-            prices = stringToIntegerList(line)
+            nums = stringToIntegerList(line)
 
-            ret = Solution().maxProfit(prices)
+            ret = Solution().maxSubArray(nums)
 
             out = str(ret)
             print(out)

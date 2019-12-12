@@ -1,9 +1,10 @@
-# -*- coding: utf-8 -*-
-# @time       : 2019-10-13 22:01
-# @author     : ssdcxy
-# @email      : 18379190862@163.com
-# @file       : P0001.py
-# @description: 两数之和
+# -*- coding:utf-8 -*-
+# Author: ssdcxy
+# Date: 2019-10-16 09:24:27
+# LastEditTime: 2019-12-10 20:09:44
+# LastEditors: ssdcxy
+# Description: 两数之和
+# FilePath: /arithmetic_oj/LeetCode/P0001.py
 
 from typing import List
 import json
@@ -32,6 +33,7 @@ def integerListToString(nums, len_of_list=None):
 def main():
     import sys
     import io
+
     def readlines():
         for line in io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8'):
             yield line.strip('\n')
@@ -40,13 +42,13 @@ def main():
     while True:
         try:
             line = next(lines)
-            nums = stringToIntegerList(line);
+            nums = stringToIntegerList(line)
             line = next(lines)
-            target = int(line);
+            target = int(line)
 
             ret = Solution().twoSum(nums, target)
 
-            out = integerListToString(ret);
+            out = integerListToString(ret)
             print(out)
         except StopIteration:
             break

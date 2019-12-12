@@ -1,9 +1,10 @@
-# -*- coding: utf-8 -*-
-# @time       : 2019-10-16 08:35
-# @author     : ssdcxy
-# @email      : 18379190862@163.com
-# @file       : P0005.py
-# @description: 最长回文子串
+# -*- coding:utf-8 -*-
+# Author: ssdcxy
+# Date: 2019-10-16 09:25:09
+# LastEditTime: 2019-12-10 20:55:00
+# LastEditors: ssdcxy
+# Description: 最长回文子串
+# FilePath: /arithmetic_oj/LeetCode/P0005.py
 
 
 class Solution:
@@ -40,6 +41,7 @@ def stringToString(input):
 def main():
     import sys
     import io
+
     def readlines():
         for line in io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8'):
             yield line.strip('\n')
@@ -52,7 +54,7 @@ def main():
 
             ret = Solution().longestPalindrome(s)
 
-            out = (ret);
+            out = (ret)
             print(out)
         except StopIteration:
             break

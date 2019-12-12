@@ -1,11 +1,11 @@
-# -*- coding: utf-8 -*-
-# @time       : 2019-10-14 23:08
-# @author     : ssdcxy
-# @email      : 18379190862@163.com
-# @file       : P0002.py.py
-# @description: 两数相加
+# -*- coding:utf-8 -*-
+# Author: ssdcxy
+# Date: 2019-10-16 09:24:48
+# LastEditTime: 2019-12-10 20:13:19
+# LastEditors: ssdcxy
+# Description: 两数相加
+# FilePath: /arithmetic_oj/LeetCode/P0002.py
 
-from typing import List
 import json
 
 
@@ -14,6 +14,7 @@ class ListNode:
     def __init__(self, x):
         self.val = x
         self.next = None
+
 
 class Solution:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
@@ -70,6 +71,7 @@ def listNodeToString(node):
 def main():
     import sys
     import io
+
     def readlines():
         for line in io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8'):
             yield line.strip('\n')
@@ -78,13 +80,13 @@ def main():
     while True:
         try:
             line = next(lines)
-            l1 = stringToListNode(line);
+            l1 = stringToListNode(line)
             line = next(lines)
-            l2 = stringToListNode(line);
+            l2 = stringToListNode(line)
 
             ret = Solution().addTwoNumbers(l1, l2)
 
-            out = listNodeToString(ret);
+            out = listNodeToString(ret)
             print(out)
         except StopIteration:
             break

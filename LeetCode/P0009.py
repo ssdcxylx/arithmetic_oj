@@ -1,9 +1,10 @@
-# -*- coding: utf-8 -*-
-# @time       : 2019-10-19 22:34
-# @author     : ssdcxy
-# @email      : 18379190862@163.com
-# @file       : P0009.py
-# @description: 回文数
+# -*- coding:utf-8 -*-
+# Author: ssdcxy
+# Date: 2019-10-24 22:16:36
+# LastEditTime: 2019-12-10 20:15:01
+# LastEditors: ssdcxy
+# Description: 回文数
+# FilePath: /arithmetic_oj/LeetCode/P0009.py
 
 
 class Solution:
@@ -18,6 +19,7 @@ class Solution:
 def main():
     import sys
     import io
+
     def readlines():
         for line in io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8'):
             yield line.strip('\n')
@@ -26,11 +28,11 @@ def main():
     while True:
         try:
             line = next(lines)
-            x = int(line);
+            x = int(line)
 
             ret = Solution().isPalindrome(x)
 
-            out = (ret);
+            out = (ret)
             print(out)
         except StopIteration:
             break

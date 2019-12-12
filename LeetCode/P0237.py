@@ -1,14 +1,15 @@
-# -*- coding: utf-8 -*-
-# @time       : 2019-10-24 23:42
-# @author     : ssdcxy
-# @email      : 18379190862@163.com
-# @file       : P0237.py
-# @description: 删除链表中的节点
+# -*- coding:utf-8 -*-
+# Author: ssdcxy
+# Date: 2019-10-25 00:01:16
+# LastEditTime: 2019-12-10 20:23:07
+# LastEditors: ssdcxy
+# Description: 删除链表中的节点
+# FilePath: /arithmetic_oj/LeetCode/P0237.py
+
 
 import json
 
 
-# Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
         self.val = x
@@ -26,7 +27,6 @@ class Solution:
             p = p.next
         p.val = p.next.val
         p.next = p.next.next
-
 
 
 def stringToIntegerList(input):
@@ -62,6 +62,7 @@ def listNodeToString(node):
 def main():
     import sys
     import io
+
     def readlines():
         for line in io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8'):
             yield line.strip('\n')
@@ -70,9 +71,9 @@ def main():
     while True:
         try:
             line = next(lines)
-            node = stringToListNode(line);
+            node = stringToListNode(line)
             line = next(lines)
-            n = int(line);
+            n = int(line)
 
             ret = Solution().deleteNode(node, n)
 
