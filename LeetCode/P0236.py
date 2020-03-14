@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2019-12-08 21:31:19
-# LastEditTime: 2019-12-10 20:22:41
+# LastEditTime: 2020-03-13 09:32:26
 # LastEditors: ssdcxy
 # Description: 二叉树的最近公共祖先
 # FilePath: /arithmetic_oj/LeetCode/P0236.py
@@ -17,19 +17,10 @@ class TreeNode:
 class Solution:
 
     def lowestCommonAncestor(self, root: TreeNode, p: TreeNode, q: TreeNode) -> TreeNode:
-        self.res = None
-        self.dfs(root, p, q)
-        return self.res
-
-    def dfs(self, root, p, q):
-        if not root:
-            return 0
-        left = self.dfs(root.left, p, q)
-        right = self.dfs(root.right, p, q)
-        mid = (root == p or root == q)
-        if left + right + mid > 1:
-            self.res = root
-        return left or right or mid
+        if not root or root == p or root == q: return root
+        left = self.lowestCommonAncestor(root.left, p, q)
+        right = self.lowestCommonAncestor(root.right, p, q)
+        return right if not left else left if not right else root
 
 
 def stringToTreeNode(input):

@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2019-10-24 22:16:36
-# LastEditTime: 2019-12-10 20:15:01
+# LastEditTime: 2020-03-04 09:54:09
 # LastEditors: ssdcxy
 # Description: 回文数
 # FilePath: /arithmetic_oj/LeetCode/P0009.py
@@ -9,11 +9,15 @@
 
 class Solution:
     def isPalindrome(self, x: int) -> bool:
-        _str = str(x)
-        _str_ = _str[::-1]
-        if _str_ == _str:
-            return True
-        return False
+        if x == 0:
+            return False
+        if x < 0 or x % 10 == 0:
+            return False
+        right = 0
+        while x > right:
+            right = right * 10 + x % 10
+            x //= 10
+        return x == right or x == right // 10
 
 
 def main():

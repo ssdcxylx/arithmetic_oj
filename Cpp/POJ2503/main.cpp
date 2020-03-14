@@ -1,3 +1,11 @@
+/*
+ * @Author: ssdcxy
+ * @Date: 2019-06-21 16:25:07
+ * @LastEditTime: 2019-12-19 22:33:47
+ * @LastEditors: ssdcxy
+ * @Description: 
+ * @FilePath: /arithmetic_oj/Cpp/POJ2503/main.cpp
+ */
 #define LOCAL 1
 
 #include <iostream>
