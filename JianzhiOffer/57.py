@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-12 13:55:06
-# LastEditTime: 2020-03-12 14:02:21
+# LastEditTime: 2020-12-11 11:31:35
 # LastEditors: ssdcxy
 # Description: 和为s的两个数字
 # FilePath: /arithmetic_oj/JianzhiOffer/57.py
@@ -14,10 +14,11 @@ class Solution:
         n = len(nums)
         left, right = 0, n - 1
         while left < right:
-            if nums[left] + nums[right] < target:
-                left += 1
-            elif nums[left] + nums[right] > target:
+            s = nums[left] + nums[right]
+            if s > target:
                 right -= 1
+            elif s < target:
+                left += 1
             else:
                 return [nums[left], nums[right]]
 

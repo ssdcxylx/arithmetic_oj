@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2019-12-09 23:05:30
-# LastEditTime: 2019-12-10 20:20:25
+# LastEditTime: 2020-04-02 18:15:56
 # LastEditors: ssdcxy
 # Description: 买卖股票的最佳时机 II
 # FilePath: /arithmetic_oj/LeetCode/P0122.py
@@ -13,28 +13,17 @@ from typing import List
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        total = 0
-        low, high = float('inf'), 0
-        curr = 0
-        for x in prices:
-            if low > x:
-                total += curr
-                curr = 0
-                low = x
-                high = x
-            else:
-                if high < x:
-                    high = x
-                else:
-                    total += curr
-                    curr = 0
-                    low = x
-                    high = x
-            if high - low > curr:
-                curr = high - low
-        if curr != 0:
-            total += curr
-        return total
+        if not prices: return 0
+        n = len(prices)
+        dp = [[0] * 2 for _ in range(n+1)]
+        for i in range(n+1):
+            if i == 0:
+                dp[i][0] = 0
+                dp[i][1] = -float('inf')
+                continue
+            dp[i][0] = max(dp[i-1][0], dp[i-1][1]+prices[i-1])
+            dp[i][1] = max(dp[i-1][1], dp[i-1][0]-prices[i-1])
+        return dp[n][0]
 
 
 def stringToIntegerList(input):

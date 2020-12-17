@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-02-21 15:09:05
-# LastEditTime: 2020-02-21 17:14:01
+# LastEditTime: 2020-04-02 19:11:24
 # LastEditors: ssdcxy
 # Description: 零钱兑换
 # FilePath: /arithmetic_oj/LeetCode/P0322.py
@@ -11,12 +11,12 @@ from typing import List
 
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
-        dp = [float("inf")] * (amount+1)
+        dp = [float(inf)] * (amount + 1)
         dp[0] = 0
         for i in range(1, amount+1):
             for coin in coins:
                 if i >= coin:
-                    dp[i] = min(dp[i], dp[i-coin] + 1)
+                    dp[i] = min(dp[i], dp[i-coin]+1)
         return dp[-1] if dp[-1] != float('inf') else -1
 
 

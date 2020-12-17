@@ -1,19 +1,24 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-10 09:23:59
-# LastEditTime: 2020-03-10 09:47:13
+# LastEditTime: 2020-11-24 22:33:29
 # LastEditors: ssdcxy
 # Description:  剪绳子
 # FilePath: /arithmetic_oj/JianzhiOffer/14-1.py
 
 class Solution:
     def cuttingRope(self, n: int) -> int:
-        import math
-        if n <= 3: return n - 1
-        a, b = n // 3, n % 3
-        if b == 0: return int(math.pow(3, a))
-        if b == 1: return int(math.pow(3, a-1) * 4)
-        return int(math.pow(3, a) * 2)
+        dp = [0 for i in range(n + 1)]
+        for i in range(2, n + 1):
+            for j in range(1, i):
+                dp[i] = max(dp[i], max(j * (i - j), j * dp[i - j]))
+        return dp[n]
+        # import math
+        # if n <= 3: return n - 1
+        # a, b = n // 3, n % 3
+        # if b == 0: return int(math.pow(3, a))
+        # if b == 1: return int(math.pow(3, a-1) * 4)
+        # return int(math.pow(3, a) * 2)
 
 def main():
     import sys

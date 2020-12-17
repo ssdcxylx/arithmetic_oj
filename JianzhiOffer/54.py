@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-12 10:54:00
-# LastEditTime: 2020-03-12 11:10:59
+# LastEditTime: 2020-12-09 09:36:50
 # LastEditors: ssdcxy
 # Description: 二叉搜索树的第k大节点
 # FilePath: /arithmetic_oj/JianzhiOffer/54.py
@@ -15,20 +15,33 @@ class TreeNode:
 
 class Solution:
     def kthLargest(self, root: TreeNode, k: int) -> int:
-        stack = []
-        cur = root
-        cnt = 0
-        while cur or stack:
-            while cur:
-                stack.append(cur)
-                cur = cur.right
-            node = stack.pop()
-            if not node: continue
-            cnt += 1
-            if cnt == k:
-                return node.val
-            cur = node.left
-        return -1
+        # 递归
+        def mid_travel(cur):
+            nonlocal k, ans
+            if cur.right: mid_travel(cur.right)
+            k -= 1
+            if not k:
+                ans = cur.val
+                return
+            if cur.left: mid_travel(cur.left)
+        ans = 0
+        mid_travel(root)
+        return ans
+        
+        # 利用栈实现递归
+        # if not root: return -1
+        # stack = []
+        # cur = root
+        # while cur or stack:
+        #     while cur:
+        #         stack.append(cur)
+        #         cur = cur.right
+        #     node = stack.pop()
+        #     k -= 1
+        #     if not k:
+        #         return node.val
+        #     cur = node.left
+        # return -1
 
         
         

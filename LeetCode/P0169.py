@@ -1,21 +1,19 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
-# Date: 2020-02-22 21:18:51
-# LastEditTime: 2020-02-22 21:26:46
+# Date: 2020-03-13 09:36:00
+# LastEditTime: 2020-03-13 09:43:20
 # LastEditors: ssdcxy
-# Description: 
-# FilePath: /arithmetic_oj/LeetCode/P0169.py
-
-import json
-from typing import List
+# Description: 多数元素
+# FilePath: /arithmetic_oj/JianzhiOffer/169.py
 
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        cnt, major = 0, nums[0]
+        cnt = 0
+        cur = nums[0]
         for num in nums:
-            major = num if cnt == 0 else major
-            cnt = cnt + 1 if major == num else cnt - 1
-        return major
+            cur = num if cnt == 0 else cur
+            cnt = cnt + (1 if num == cur else - 1)
+        return cur
 
 def stringToIntegerList(input):
     return json.loads(input)

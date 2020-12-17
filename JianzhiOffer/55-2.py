@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-12 13:41:04
-# LastEditTime: 2020-03-12 13:54:49
+# LastEditTime: 2020-12-09 11:21:38
 # LastEditors: ssdcxy
 # Description: 平衡二叉树
 # FilePath: /arithmetic_oj/JianzhiOffer/55-2.py
@@ -15,11 +15,14 @@ class TreeNode:
 
 class Solution:
     def isBalanced(self, root: TreeNode) -> bool:
-        def height(node):
-            if not node: return -1
-            return 1 + max(height(node.left), height(node.right))
-        if not root: return True
-        return abs(height(root.left) - height(root.right)) < 2 and self.isBalanced(root.left) and self.isBalanced(root.right)
+        def recursive(cur):
+            if not cur: return 0
+            left = recursive(cur.left)
+            if left == -1: return -1
+            right = recursive(cur.right)
+            if right == -1: return - 1
+            return max(left, right) + 1 if abs(left - right) <= 1 else -1
+        return recursive(root) != -1
 
 def stringToTreeNode(input):
     input = input.strip()

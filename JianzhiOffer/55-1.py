@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-12 11:11:51
-# LastEditTime: 2020-03-12 11:15:08
+# LastEditTime: 2020-12-09 11:11:46
 # LastEditors: ssdcxy
 # Description: 二叉树的深度
 # FilePath: /arithmetic_oj/JianzhiOffer/55-1.py
@@ -16,18 +16,19 @@ class TreeNode:
 class Solution:
     def maxDepth(self, root: TreeNode) -> int:
         if not root: return 0
-        queue = [root]
-        ans = 0
-        while queue:
-            n = len(queue)
-            ans += 1
-            for i in range(n):
-                node = queue.pop(0)
-                if node.left:
-                    queue.append(node.left)
-                if node.right:
-                    queue.append(node.right)
-        return ans
+        return 1 + max(self.maxDepth(root.left) + self.maxDepth(root.right)) 
+        # if not root: return 0
+        # queue = [root]
+        # layer = 0
+        # while queue:
+        #     layer += 1
+        #     n = len(queue)
+        #     for _ in range(n):
+        #         node = queue.pop(0)
+        #         if node.left: queue.append(node.left)
+        #         if node.right: queue.append(node.right)
+        # return layer
+
         
 
 def stringToTreeNode(input):

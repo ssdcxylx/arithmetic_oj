@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-12 10:25:36
-# LastEditTime: 2020-03-12 10:34:01
+# LastEditTime: 2020-12-08 12:29:27
 # LastEditors: ssdcxy
 # Description: 在排序数组中查找数字 I
 # FilePath: /arithmetic_oj/JianzhiOffer/53-1.py
@@ -11,26 +11,26 @@ from typing import List
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
+        if not nums: return 0
+        if target not in nums: return 0
         n = len(nums)
-        start, end = 0, n - 1
-        while start <= end:
-            mid = (start + end) >> 1
-            if target == nums[mid]:
-                count = 1
-                left = mid - 1
-                right = mid + 1
-                while left >= start and nums[left] == target:
-                    count += 1
-                    left -= 1
-                while right <= end and nums[right] == target:
-                    count += 1
-                    right += 1
-                return count 
-            elif target < nums[mid]:
-                end = mid - 1
+        left, right = 0, n - 1
+        count = 0 
+        while left <= right:
+            mid = left + ((right - left)>>1)
+            if nums[mid] < target:
+                left = mid + 1
+            elif nums[mid] > target:
+                right = mid - 1
             else:
-                start = mid + 1
+                start = end = mid
+                while start - 1 >= left and nums[start-1] == target:
+                    start -= 1
+                while end + 1 <= right and nums[end+1] == target:
+                    end += 1
+                return end - start + 1
         return 0
+
 
 
 

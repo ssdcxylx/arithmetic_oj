@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-12 10:36:33
-# LastEditTime: 2020-03-12 10:50:40
+# LastEditTime: 2020-12-08 12:42:03
 # LastEditors: ssdcxy
 # Description: 0～n-1中缺失的数字
 # FilePath: /arithmetic_oj/JianzhiOffer/53-2.py
@@ -11,14 +11,15 @@ from typing import List
 
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
-        start, end = 0, n
-        while start < end:
-            mid = (start + end) >> 1
+        n = len(nums)
+        left, right = 0, n
+        while left < right:
+            mid = left + (right - left >> 1)
             if nums[mid] == mid:
-                start = mid + 1
+                left += 1
             else:
-                end = mid
-        return start
+                right = mid
+        return left
             
             
 

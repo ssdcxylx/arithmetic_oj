@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2019-12-19 22:15:36
-# LastEditTime: 2019-12-19 22:56:52
+# LastEditTime: 2020-12-01 10:20:58
 # LastEditors: ssdcxy
 # Description: 在排序数组中查找元素的第一个和最后一个位置
 # FilePath: /arithmetic_oj/LeetCode/P0034.py
@@ -12,24 +12,22 @@ import json
 
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
+        if not nums: return [-1, -1]
+        if target not in nums: return [-1, -1]
         n = len(nums)
-        if n == 0:
-            return [-1, -1]
-        left, right = 0, n - 1
+        left, right = 0, n -1
         while left <= right:
-            mid = int(left + (right - left) / 2)
+            mid = left + ((right - left) >> 1)
             if nums[mid] == target:
                 break
             elif nums[mid] > target:
                 right = mid - 1
             else:
                 left = mid + 1
-        if left > right:
-            return [-1, -1]
-        left, right = mid, mid
-        while left > 0 and nums[left-1] == target:
+        left = right = mid
+        while 0 <= left - 1 and nums[left-1] == target:
             left -= 1
-        while right < n - 1 and nums[right+1] == target:
+        while right + 1 < n and nums[right+1] == target:
             right += 1
         return [left, right]
 

@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-02-21 21:41:13
-# LastEditTime: 2020-02-22 07:57:48
+# LastEditTime: 2020-12-14 14:21:49
 # LastEditors: ssdcxy
 # Description: 最佳买卖股票时机含冷冻期
 # FilePath: /arithmetic_oj/LeetCode/P0309.py
@@ -13,13 +13,16 @@ class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         if not prices: return 0
         n = len(prices)
-        dp = [[0, 0] for _ in range(n+1)]
-        prices.insert(0, 0)
-
-        dp[1][1] = -prices[1]
-        for i in range(2, n+1):
-            dp[i][0] = max(dp[i-1][0], dp[i-1][1] + prices[i])
-            dp[i][1] = max(dp[i-1][1], dp[i-2][0] - prices[i])
+        dp = [[0] * 2 for _ in range(n+1)]
+        for i in range(n+1):
+            if i == 0:                         
+                dp[i][0] = 0
+                dp[i][1] = -float('inf')
+            if i == 1:
+                dp[i][0] = 0
+                dp[i][1] = -prices[i]
+            dp[i][0] = max(dp[i-1][0], dp[i-1][1]+prices[i-1])
+            dp[i][1] = max(dp[i-1][1], dp[i-2][0]-prices[i-1])
         return dp[n][0]
             
 

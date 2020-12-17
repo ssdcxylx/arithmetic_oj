@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-02-27 11:10:41
-# LastEditTime: 2020-03-02 09:19:58
+# LastEditTime: 2020-04-02 17:57:34
 # LastEditors: ssdcxy
 # Description: 对称二叉树
 # FilePath: /arithmetic_oj/LeetCode/P0101.py
@@ -15,15 +15,11 @@ class TreeNode:
 
 class Solution:
     def isSymmetric(self, root: TreeNode) -> bool:
-        def isEqual(left:TreeNode, right:TreeNode) -> bool:
-            if not left and not right:
-                return True
-            if not left or not right:
-                return False
-            if left.val != right.val:
-                return False
+        def isEqual(left, right):
+            if not left and not right: return True
+            if not left or not right: return False
+            if left.val != right.val: return False
             return isEqual(left.left, right.right) and isEqual(left.right, right.left)
-                
         if not root: return True
         return isEqual(root.left, root.right)
         

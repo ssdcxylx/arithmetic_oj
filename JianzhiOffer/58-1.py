@@ -1,17 +1,25 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-12 14:02:59
-# LastEditTime: 2020-03-12 14:06:49
+# LastEditTime: 2020-12-11 12:07:57
 # LastEditors: ssdcxy
 # Description: 翻转单词顺序
 # FilePath: /arithmetic_oj/JianzhiOffer/58-1.py
 
 class Solution:
     def reverseWords(self, s: str) -> str:
-        lst = s.split(' ')
-        while '' in lst:
-            lst.remove('')
-        return ' '.join(lst[::-1])
+        s = s.strip()
+        n = len(s)
+        left = right = n
+        res = []
+        while right:
+            while left and s[left-1] != " ":
+                left -= 1
+            res.append(s[left:right])
+            while left and s[left-1] == " ":
+                left -= 1
+            right = left
+        return " ".join(res)
         
 
 def stringToString(input):

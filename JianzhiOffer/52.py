@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-12 10:16:55
-# LastEditTime: 2020-03-12 10:24:50
+# LastEditTime: 2020-12-08 11:25:17
 # LastEditors: ssdcxy
 # Description: 两个链表的第一个公共节点
 # FilePath: /arithmetic_oj/JianzhiOffer/52.py
@@ -16,11 +16,11 @@ class ListNode:
 
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
-        node1, node2 = headA, headB
-        while node1 != node2:
-            node1 = node1.next if node1 else headB
-            node2 = node2.next if node2 else headA
-        return node1
+        a, b = headA, headB
+        while a != b:
+            a = a.next if a else headB
+            b = b.next if b else headA
+        return a
 
 
 

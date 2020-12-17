@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-08 08:26:08
-# LastEditTime: 2020-03-08 08:55:43
+# LastEditTime: 2020-04-02 18:04:59
 # LastEditors: ssdcxy
 # Description: 二叉树的中序遍历
 # FilePath: /arithmetic_oj/LeetCode/P0094.py
@@ -23,9 +23,10 @@ class Solution:
         cur = root
         while cur or _stack:
             while cur:
-                 _stack.append(cur)
+                _stack.append(cur)
                 cur = cur.left
             node = _stack.pop()
+            if not node: continue
             res.append(node.val)
             cur = node.right
         return res

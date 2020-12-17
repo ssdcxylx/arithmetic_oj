@@ -1,19 +1,23 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-10 10:08:37
-# LastEditTime: 2020-03-10 10:18:32
+# LastEditTime: 2020-11-25 23:39:42
 # LastEditors: ssdcxy
 # Description: 数值的整数次方
 # FilePath: /arithmetic_oj/JianzhiOffer/16.py
 
 class Solution:
     def myPow(self, x: float, n: int) -> float:
-        rem = 1
+        if x == 0: return 0
+        res = 1
+        if n < 0:
+            x, n = 1/x, -n
         while n:
-            if n % 2: rem = (rem * x)
-            x = x ** 2
-            n //= 2
-        return rem
+            if n & 1:
+                res *= x
+            x *= x
+            n >>= 1
+        return res
             
 
 def stringToDouble(input):

@@ -1,27 +1,24 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-11 20:31:45
-# LastEditTime: 2020-03-11 21:13:12
+# LastEditTime: 2020-12-05 23:36:25
 # LastEditors: ssdcxy
 # Description:  数字序列中某一位的数字
 # FilePath: /arithmetic_oj/JianzhiOffer/44.py
 
 class Solution:
     def findNthDigit(self, n: int) -> int:
-        if not n: return 0
-        i = 0
-        count = 1
+        if n < 10: return n
+        i = 1
+        count = 9
         while n - count > 0:
             n -= count
-            count = (i+1) * (10 ** (i+1) - 10 ** (i))
+            count = (i+1) * (10 ** (i+1) - 10 ** i)
             i += 1
-        num = n // i + 10 ** (i-1)
-        pos = n % i
-        return str(num)[pos]
+        num = (n - 1) // i + 10 ** (i-1)
+        pos = (n - 1) % i
+        return (num // (10 ** (i-1-pos))) % 10
             
-
-
-
 
 
 def main():

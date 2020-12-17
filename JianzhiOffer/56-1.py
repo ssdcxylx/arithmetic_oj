@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-12 11:15:53
-# LastEditTime: 2020-03-12 11:53:39
+# LastEditTime: 2020-12-09 11:49:59
 # LastEditors: ssdcxy
 # Description: 数组中数字出现的次数
 # FilePath: /arithmetic_oj/JianzhiOffer/56-1.py
@@ -17,8 +17,10 @@ class Solution:
         diff &= -diff
         res = [0, 0]
         for num in nums:
-            if (num&diff) == 0: res[0] ^= num
-            else: res[1] ^= num
+            if (num & diff):
+                res[0] ^= num
+            else:
+                res[1] ^= num
         return res
 
 

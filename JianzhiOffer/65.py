@@ -1,20 +1,18 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-13 08:20:59
-# LastEditTime: 2020-03-13 08:26:28
+# LastEditTime: 2020-12-14 23:49:33
 # LastEditors: ssdcxy
 # Description: 不用加减乘除做加法
 # FilePath: /arithmetic_oj/JianzhiOffer/65.py
 
 class Solution:
     def add(self, a: int, b: int) -> int:
-        a &= 0xFFFFFFFF
-        b &= 0xFFFFFFFF
+        x = 0xFFFFFFFF
+        a, b = a&x, b&x
         while b:
-            carry = a & b
-            a ^= b
-            b = (carry << 1) & 0xFFFFFFFF
-        return a if a < 0x80000000 else ~(a^0xFFFFFFFF)
+            a, b = (a^b), (a&b)<<1&x
+        return a if a <= 0x7FFFFFFF else ~(a^x)
 
 def main():
     import sys

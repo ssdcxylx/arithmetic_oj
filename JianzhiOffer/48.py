@@ -1,23 +1,25 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-12 08:24:34
-# LastEditTime: 2020-03-12 08:42:52
+# LastEditTime: 2020-12-06 12:12:14
 # LastEditors: ssdcxy
 # Description: 最长不含重复字符的子字符串
 # FilePath: /arithmetic_oj/JianzhiOffer/48.py
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        head = tail = 0
-        _max = 0
+        if not s: return 0
         n = len(s)
-        while tail < n:
-            if s[tail] not in s[head:tail]:
-                _max = max(tail-head+1, _max)
+        left = right = 0
+        _max = 0
+        while right < n:
+            if s[right] not in s[left:right]:
+               _max = max(right-left+1, _max)
             else:
-                while s[tail] in s[head:tail]:
-                    head += 1
-            tail += 1
+                left += 1
+                while s[right] in s[left:right]:
+                    left += 1
+            right += 1
         return _max
 
 def stringToString(input):

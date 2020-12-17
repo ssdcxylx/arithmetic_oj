@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-10 15:18:22
-# LastEditTime: 2020-03-10 15:57:19
+# LastEditTime: 2020-03-21 17:04:10
 # LastEditors: ssdcxy
 # Description: 树的子结构
 # FilePath: /arithmetic_oj/JianzhiOffer/26.py
@@ -20,7 +20,7 @@ class Solution:
                 return True
             if not node1:
                 return False
-            return node1.val == node2.val and isSubTree(node1.left, node2.right) and isSubTree(node1.right, node2.right)
+            return node1.val == node2.val and isSubTree(node1.left, node2.left) and isSubTree(node1.right, node2.right)
         if not A or not B: return False
         return isSubTree(A, B) or self.isSubStructure(A.left, B) or self.isSubStructure(A.right, B)
 

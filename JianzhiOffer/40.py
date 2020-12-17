@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-11 15:55:04
-# LastEditTime: 2020-03-11 16:57:22
+# LastEditTime: 2020-03-20 07:27:02
 # LastEditors: ssdcxy
 # Description: 最小的k个数
 # FilePath: /arithmetic_oj/JianzhiOffer/40.py
@@ -13,8 +13,8 @@ class Solution:
     def getLeastNumbers(self, arr: List[int], k: int) -> List[int]:
         def sink(i):
             nonlocal n
-            left = i * 2 + 1
-            right = i * 2 + 2
+            left = 2 * i + 1
+            right = 2 * i + 2
             if left >= n: return
             min_i = left
             if right < n and arr[left] > arr[right]:
@@ -27,7 +27,7 @@ class Solution:
             for i in range(n//2, -1, -1):
                 sink(i)
         n = len(arr)
-        if k > n: return []
+        if k > n: return[]
         build_heap()
         res = []
         for _ in range(k):
@@ -36,6 +36,7 @@ class Solution:
             n -= 1
             sink(0)
         return res
+
 
 def stringToIntegerList(input):
     return json.loads(input)

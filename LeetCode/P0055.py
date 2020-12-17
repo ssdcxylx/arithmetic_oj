@@ -1,19 +1,23 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
-# Date: 2020-03-13 09:36:00
-# LastEditTime: 2020-03-13 09:43:20
+# Date: 2020-03-22 10:58:34
+# LastEditTime: 2020-03-22 11:18:23
 # LastEditors: ssdcxy
-# Description: 多数元素
-# FilePath: /arithmetic_oj/JianzhiOffer/169.py
+# Description: 跳跃游戏
+# FilePath: /arithmetic_oj/LeetCode/P0055.py
+
+import json
+from typing import List
 
 class Solution:
-    def majorityElement(self, nums: List[int]) -> int:
-        cnt = 0
-        cur = nums[0]
-        for num in nums:
-            cur = num if cnt == 0 else cur
-            cnt = cnt + (1 if num == cur else - 1)
-        return cur
+    def canJump(self, nums: List[int]) -> bool:
+        max_i = 0
+        for i, jump in enumerate(nums):
+            if i <= max_i and i + jump > max_i:
+                max_i = i + jump
+        return max_i >= i
+                
+
 
 def stringToIntegerList(input):
     return json.loads(input)
@@ -31,9 +35,9 @@ def main():
             line = next(lines)
             nums = stringToIntegerList(line);
             
-            ret = Solution().majorityElement(nums)
+            ret = Solution().canJump(nums)
 
-            out = str(ret);
+            out = (ret);
             print(out)
         except StopIteration:
             break

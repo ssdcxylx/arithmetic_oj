@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-13 09:30:27
-# LastEditTime: 2020-03-13 09:35:07
+# LastEditTime: 2020-12-15 14:07:49
 # LastEditors: ssdcxy
 # Description: 二叉树的最近公共祖先
 # FilePath: /arithmetic_oj/JianzhiOffer/68-2.py
@@ -18,8 +18,13 @@ class Solution:
         if not root or root.val == p.val or root.val == q.val: return root
         left = self.lowestCommonAncestor(root.left, p, q)
         right = self.lowestCommonAncestor(root.right, p, q)
-        return right if not left else left if not right else root 
-
+        if left and right:
+            return root
+        elif left:
+            return left
+        else:
+            return right
+        
 def stringToTreeNode(input):
     input = input.strip()
     input = input[1:-1]

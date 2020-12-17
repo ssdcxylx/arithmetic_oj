@@ -1,15 +1,18 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2019-10-16 09:24:27
-# LastEditTime: 2019-12-10 20:09:44
+# LastEditTime: 2020-10-29 16:25:01
 # LastEditors: ssdcxy
 # Description: 两数之和
 # FilePath: /arithmetic_oj/LeetCode/P0001.py
 
+
+
 from typing import List
 import json
 
-
+import time
+print(int(time.strftime("%m", time.localtime())))
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         nums_dict = {}

@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-02-19 20:41:33
-# LastEditTime: 2020-02-20 14:49:45
+# LastEditTime: 2020-03-15 17:47:55
 # LastEditors: ssdcxy
 # Description: 岛屿的最大面积
 # FilePath: /arithmetic_oj/LeetCode/P0695.py
@@ -11,12 +11,14 @@ import json
 class Solution(object):
     def maxAreaOfIsland(self, grid):
         def area(r, c):
-            if not (0 <= r < len(grid) and 0 <= c < len(grid[0]) and (r, c) not in seen and grid[r][c]):
+            nonlocal m, n
+            if not (0 <= r < m and 0 <= c < n and (r, c) not in seen and grid[r][c]):
                 return 0
             seen.add((r, c))
-            return (1 + area(r+1, c) + area(r-1, c) + area(r, c+1) + area(r, c-1))
+            return 1 + (area(r+1, c) + area(r-1, c) + area(r, c+1) + area(r, c-1))
+        m, n = len(grid), len(grid[0])
         seen = set()
-        return max(area(r, c) for r in range(len(grid)) for c in range(len(grid[0])))
+        return max(area(r, c) for r in range(m) for c in range(n))
 
 
 def stringToInt2dArray(input):

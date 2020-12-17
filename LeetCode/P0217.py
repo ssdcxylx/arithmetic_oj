@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-03 10:25:07
-# LastEditTime: 2020-03-03 10:29:51
+# LastEditTime: 2020-12-13 11:52:31
 # LastEditors: ssdcxy
 # Description: 存在重复元素
 # FilePath: /arithmetic_oj/LeetCode/P0217.py
@@ -11,11 +11,11 @@ import json
 
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
-        _set = set()
+        s = set()
         for num in nums:
-            if _set.__contains__(num):
+            if num in s:
                 return True
-            _set.add(num)
+            s.add(num)
         return False
         
 

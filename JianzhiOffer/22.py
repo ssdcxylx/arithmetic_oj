@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-10 12:05:03
-# LastEditTime: 2020-03-10 12:25:13
+# LastEditTime: 2020-11-26 20:19:33
 # LastEditors: ssdcxy
 # Description: 
 # FilePath: /arithmetic_oj/JianzhiOffer/22.py
@@ -16,19 +16,20 @@ class ListNode:
 
 class Solution:
     def getKthFromEnd(self, head: ListNode, k: int) -> ListNode:
-        def backtrack(node, k):
-            nonlocal tmp, res
-            if not node:
-                tmp = 0
+        if not head or k == 0:
+            return None
+        p1 = p2 = head
+        while k:
+            if p1.next:
+                p1 = p1.next
+                k -= 1
+            else:
                 return None
-            backtrack(node.next, k)
-            tmp += 1
-            if k == tmp:
-                res = node
-            return res
-        tmp = 0
-        res = TreeNode(-1)
-        return backtrack(head, k)
+        while p1:
+            p1 = p1.next
+            p2 = p2.next
+        return p2
+        
 
 def stringToIntegerList(input):
     return json.loads(input)

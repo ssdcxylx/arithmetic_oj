@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-11 19:39:48
-# LastEditTime: 2020-03-11 19:45:37
+# LastEditTime: 2020-12-05 21:19:23
 # LastEditors: ssdcxy
 # Description: 连续子数组的最大和
 # FilePath: /arithmetic_oj/JianzhiOffer/42.py
@@ -11,16 +11,9 @@ from typing import List
 
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        _max = -float('inf')
-        cur = 0
-        for num in nums:
-            if cur > 0:
-                cur += num
-            else:
-                cur = num
-            if cur > _max:
-                _max = cur
-        return _max
+        for i in range(1, len(nums)):
+            nums[i] += nums[i-1] if nums[i-1] > 0 else 0
+        return max(nums)
         
 
 def stringToIntegerList(input):

@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-08 08:07:23
-# LastEditTime: 2020-03-08 09:46:41
+# LastEditTime: 2020-04-02 18:07:45
 # LastEditors: ssdcxy
 # Description: 二叉树的前序遍历
 # FilePath: /arithmetic_oj/LeetCode/P0144.py
@@ -19,14 +19,13 @@ class TreeNode:
 class Solution:
     def preorderTraversal(self, root: TreeNode) -> List[int]:
         res = []
-        _stack = []
-        _stack.append(root)
+        _stack = [root]
         while _stack:
             node = _stack.pop()
             if not node: continue
             res.append(node.val)
-            _stack.append(root.right)
-            _stack.append(root.left)
+            _stack.append(node.right)
+            _stack.append(node.left)
         return res
 
 

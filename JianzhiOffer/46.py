@@ -1,26 +1,29 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-11 21:36:01
-# LastEditTime: 2020-03-11 21:50:06
+# LastEditTime: 2020-12-06 11:42:08
 # LastEditors: ssdcxy
 # Description: 把数字翻译成字符串
 # FilePath: /arithmetic_oj/JianzhiOffer/46.py
 
 class Solution:
     def translateNum(self, num: int) -> int:
+        # num = str(num)
+        # n = len(num)
+        # a = b = 1
+        # for i in range(2, n+1):
+        #     a, b = (a + b if "10" <= s[i-2:i] <= "25" else a), a
+        # return a
+        def recursive(i):
+            if not i: return 1
+            if "10" <= num[i-2:i] <= "25":
+                return recursive(i-1) + recursive(i-2)
+            else:
+                return recursive(i-1)
         num = str(num)
         n = len(num)
-        dp = [0] * (n+1)
-        dp[0] = dp[1] = 1
-        for i in range(1, n):
-            if num[i-1] == "0" or num[i-1:i+1] > "25":
-                dp[i+1] = dp[i]
-            else:
-                dp[i+1] = dp[i] + dp[i-1]
-        return dp[n]
-        
-            
-        
+        return recursive(n)
+       
 
 def main():
     import sys

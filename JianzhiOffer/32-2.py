@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-10 21:57:12
-# LastEditTime: 2020-03-10 22:10:54
+# LastEditTime: 2020-12-01 22:17:13
 # LastEditors: ssdcxy
 # Description: 从上到下打印二叉树 II
 # FilePath: /arithmetic_oj/JianzhiOffer/32-2.py
@@ -18,21 +18,26 @@ class TreeNode:
 
 class Solution:
     def levelOrder(self, root: TreeNode) -> List[List[int]]:
-        if not root: return []
-        queue = []
-        res = []
-        queue.append(root)
-        while queue:
-            count = len(queue)
-            tmp = []
-            for i in range(count):
-                node = queue.pop(0)
-                tmp.append(node.val)
-                if node.left:
-                    queue.append(node.left)
+        def bfs(node, level):
+            if not node: return
+            if len(res) <= level:
+                if node.left or node.right:
+                    res.append([])
+            if level & 1:
                 if node.right:
-                    queue.append(node.right)
-            res.append(tmp)
+                    res[level].(node.right.val)
+                if node.left:
+                    res[level].append(node.left.val)
+            else:
+                if node.left:
+                    res[level].append(node.left.val)
+                if node.right:
+                    res[level].append(node.right.val)
+            bfs(node.left, level+1)
+            bfs(node.right, level+1)
+        if not root: return []
+        res = [[root.val]]
+        bfs(root, 1)
         return res
 
 

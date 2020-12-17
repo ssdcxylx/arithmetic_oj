@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-02-20 08:38:38
-# LastEditTime: 2020-02-20 08:53:57
+# LastEditTime: 2020-03-19 17:01:24
 # LastEditors: ssdcxy
 # Description: 组合总和 II
 # FilePath: /arithmetic_oj/LeetCode/P0040.py
@@ -11,20 +11,22 @@ from typing import List
 
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
-        def backtrack(i, tmp_sum, tmp):
+        def backtrack(i, tmp_lst):
+            nonlocal n, target
             if tmp_sum == target:
-                if tmp not in res:
-                    res.append(tmp)
+                res.append(tmp_lst)
                 return
             for j in range(i, n):
-                if tmp_sum + candidates[j] > target: break
-                if j > i and candidates[j] == candidates[j-1]: continue
-                backtrack(j+1, tmp_sum+candidates[j], tmp_sum+[candidates[j]])
+                if sum(tmp_lst) + candidates[j] > target: break
+                if j > i and candidates[j] == candidates[i]: continue
+                backtrack(j, tmp_lst+[candidates[j]])
         candidates.sort()
-        n = len(candidates)
         res = []
-        backtrack(0, 0, [], [])
+        n = len(candidates)
+        backtrack(0, [])
         return res
+
+
 
 
 def stringToIntegerList(input):

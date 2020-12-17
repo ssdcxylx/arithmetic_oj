@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-10 10:19:07
-# LastEditTime: 2020-03-10 10:21:02
+# LastEditTime: 2020-11-26 10:58:03
 # LastEditors: ssdcxy
 # Description: 打印从1到最大的n位数
 # FilePath: /arithmetic_oj/JianzhiOffer/17.py
@@ -11,9 +11,53 @@ from typing import List
 
 class Solution:
     def printNumbers(self, n: int) -> List[int]:
-        import math
-        num = math.pow(10, n)
-        return [i for i in range(1, num)]
+        # def increment():
+        #     isOver = True
+        #     nTaskOver = 0
+        #     for i in range(n-1, -1, -1):
+        #         nSum = nTaskOver + number[i]
+        #         if i == n-1:
+        #             nSum += 1
+        #         if nSum >= 10:
+        #             if i == 0:
+        #                 return False
+        #             else:
+        #                 nSum -= 10
+        #                 nTaskOver = 1
+        #                 number[i] = nSum
+        #         else:
+        #             number[i] = nSum
+        #             return True
+        #     return not isOver
+        # def printNumber():
+        #     ans = 0
+        #     for i in range(n):
+        #         if number[i]:
+        #             ans += (10 ** (n - i - 1) * number[i])
+        #     return ans
+        # number = [0] * n
+        # res = []
+        # while increment():
+        #     res.append(printNumber())
+        # return res
+        def dfs(x):
+            nonlocal left, count_nine
+            if x == n:
+                s = ''.join(num[left:])
+                if s != '0': res.append(int(s))
+                if n - left == count_nine: left -= 1
+                return
+            for i in range(10):
+                num[x] = str(i)
+                if i == 9: count_nine += 1
+                dfs(x+1)
+            count_nine -= 1
+        num, res = ['0'] * n, []
+        left, count_nine = n-1, 0
+        dfs(0)
+        return res
+            
+
 
 def integerListToString(nums, len_of_list=None):
     if not len_of_list:

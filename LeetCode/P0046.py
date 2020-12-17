@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-02-20 09:22:54
-# LastEditTime: 2020-03-11 15:21:46
+# LastEditTime: 2020-03-25 09:09:12
 # LastEditors: ssdcxy
 # Description: 全排列
 # FilePath: /arithmetic_oj/LeetCode/P0046.py
@@ -11,17 +11,18 @@ from typing import List
 
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
-        def back_track(i, tmp):
+        def backtrack(tmp):
+            nonlocal n
+            if len(tmp) == n:
+                res.append(tmp)
+                return
             for j in range(n):
-                if len(tmp) == n:
-                    res.append(tmp)
-                    return 
                 if nums[j] in tmp:
                     continue
-                back_track(i, tmp+[nums[j]])
-        res = []
+                backtrack(tmp+[nums[j]])
         n = len(nums)
-        back_track(0, [])
+        res = []
+        backtrack([])
         return res
 
 

@@ -125,11 +125,53 @@ def heap_sort(lst):
     return lst
 
 
+def radix_sort(lst, radix=10):
+    import math
+    k = int(math.ceil(math.log(max(lst), radix)))
+    bucket = [[] for _ in range(radix)]
+    for i in range(1, k + 1):
+        for num in lst:
+            bucket[int(num % (radix ** (i)) // (radix ** (i - 1)))].append(num)
+        del lst[:]
+        for each in bucket:
+            lst.extend(each)
+        bucket = [[] for _ in range(radix)]
+    return lst
+        
+        
+
+
+
+# lst = [5, 4, 3, 2, 1]
+
+# def quicksort(left, right):
+#     if left > right:
+#         return
+#     start, end = left, right
+#     pivot = lst[left]
+#     while left < right:
+#         while left < right and lst[right] > pivot:
+#             right -= 1
+#         lst[left] = lst[right]
+#         while left < right and lst[left] < pivot:
+#             left += 1
+#         lst[right] = lst[left]
+#     lst[right] = pivot
+#     quicksort(start, right-1)
+#     quicksort(right+1, end)
+
+# quicksort(0, len(lst)-1)
+# print(lst)
+
+# quicksort = lambda l: quicksort([x for x in l[1:] if x < l[0]]) + [l[0]] + quicksort([x for x in l[1:] if x >= l[0]]) if l else []
+# print(quicksort(lst))
+
 if __name__ == '__main__':
-    lst = [2, 2, 7, 6, 1, 3, 5]
+    lst = [12, 22, 17, 61, 11, 13, 51]
     k = 4
     # top_k(lst, 0, len(lst)-1, k)
     # print(quick_sort(lst, 0, len(lst)-1))
     # print(merge_sort(lst))
-    print(heap_sort(lst))
+    # print(heap_sort(lst))
+    print(radix_sort(lst))
 

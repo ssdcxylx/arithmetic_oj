@@ -93,25 +93,25 @@ def insert_sort(lst, first, last):
 
 
 def simple_quick_sort(l):
-    quick_sort = lambda l: quick_sort([i for i in l[1:] if i < l[0]]) +[l[0]] + quick_sort([j for j in l[1:] if j >= l[0]]) if l else []
+    quick_sort = lambda l: quick_sort([i for i in l[1:] if i < l[0]]) + [l[0]] + quick_sort([j for j in l[1:] if j >= l[0]]) if l else []
     return quick_sort(l)
 
 
 # 测试
 if __name__ == "__main__":
     print(simple_quick_sort([5, 3, 3, 2, 4]))
-    sortLst = []
-    sortLst2 = []
-    # 随机初始化序列
-    for i in range(0, 5000000):
-        element = 1
-        sortLst.append(element)
-        sortLst2.append(element)
-    start = time.clock()
-    quick_sort(sortLst, 0, len(sortLst) - 1)
-    end = time.clock()
-    print(end - start)
-    start = time.clock()
-    sortLst2.sort()
-    end = time.clock()
-    print(end - start)
+    # sortLst = []
+    # sortLst2 = []
+    # # 随机初始化序列
+    # for i in range(0, 5000000):
+    #     element = 1
+    #     sortLst.append(element)
+    #     sortLst2.append(element)
+    # start = time.clock()
+    # quick_sort(sortLst, 0, len(sortLst) - 1)
+    # end = time.clock()
+    # print(end - start)
+    # start = time.clock()
+    # sortLst2.sort()
+    # end = time.clock()
+    # print(end - start)

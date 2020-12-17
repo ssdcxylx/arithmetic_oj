@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-09 21:50:46
-# LastEditTime: 2020-03-09 22:28:33
+# LastEditTime: 2020-11-23 19:45:17
 # LastEditors: ssdcxy
 # Description: 重建二叉树
 # FilePath: /arithmetic_oj/JianzhiOffer/07.py
@@ -15,12 +15,12 @@ class TreeNode:
 
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
-        def build(pre, left, right):
-            if left > right: return
-            root = TreeNode(preorder[pre])
-            i = dic[preorder[pre]]
-            root.left = build(pre+1, left, i-1)
-            root.right = build(i-left+pre+1, i+1, right)
+        def build(p_cur, i_left, i_right):
+            if i_left > i_right: return
+            root = TreeNode(preorder[p_cur])
+            i_pos = dic[preorder[p_cur]]
+            root.left = build(p_cur+1, i_left, i_pos-1)
+            root.right = build(p_cur+i_pos-i_left+1, i_pos+1, i_right)
             return root
         dic = {}
         n = len(preorder)

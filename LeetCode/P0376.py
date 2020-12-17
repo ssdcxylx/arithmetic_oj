@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-02-21 10:49:28
-# LastEditTime: 2020-02-21 11:43:42
+# LastEditTime: 2020-12-12 14:02:35
 # LastEditors: ssdcxy
 # Description: 摆动序列
 # FilePath: /arithmetic_oj/LeetCode/P0376.py
@@ -12,7 +12,7 @@ from typing import List
 class Solution:
     def wiggleMaxLength(self, nums: List[int]) -> int:
         if not nums: return 0
-        up, down = 1, 1
+        up = down = 1
         for i in range(1, len(nums)):
             if nums[i] > nums[i-1]:
                 up = down + 1

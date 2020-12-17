@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-11 14:15:41
-# LastEditTime: 2020-03-11 15:08:26
+# LastEditTime: 2020-12-02 10:10:50
 # LastEditors: ssdcxy
 # Description: 序列化二叉树
 # FilePath: /arithmetic_oj/JianzhiOffer/37.py
@@ -21,17 +21,17 @@ class Codec:
         :type root: TreeNode
         :rtype: str
         """
-        if not root: return None
+        if not root: return []
+        queue = [root]
         res = []
-        stack = [root]
-        while stack:
-            node = stack.pop(0)
-            if not node:
-                res.append(None)
+        while queue:
+            cur = queue.pop(0)
+            if not cur:
+                res.append("null")
             else:
-                res.append(node.val)
-                stack.append(node.left)
-                stack.append(node.right)
+                res.append(cur.val)
+                queue.append(cur.left)
+                queue.append(cur.right)
         return res
             
 
@@ -45,28 +45,23 @@ class Codec:
         """
         if not data: return None
         root = TreeNode(data[0])
-        stack = [root]
+        queue = [root]
         i = 1
         n = len(data)
-        while stack:
-            cur = stack.pop(0)
+        while queue:
+            cur = queue.pop(0)
             if not cur: continue
             if i < n:
-                if data[i] == "null":
-                    left = None
-                else:
-                    left = TreeNode(data[i])
-                    stack.append(left)
+                left = TreeNode(data[i]) if data[i] != "null" else None
+                queue.append(left)
                 i += 1
             if i < n:
-                if data[i] == "null":
-                    right = None
-                else:
-                    right = TreeNode(data[i])
-                    stack.append(right)
+                right = TreeNode(data[i]) if data[i] != "null" else None
+                queue.append(right)
                 i += 1
             cur.left = left
             cur.right = right
+        return root
                 
 
 # Your Codec object will be instantiated and called as such:

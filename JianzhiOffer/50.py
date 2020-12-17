@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-12 09:00:57
-# LastEditTime: 2020-03-12 09:17:08
+# LastEditTime: 2020-12-06 22:14:22
 # LastEditors: ssdcxy
 # Description: 第一个只出现一次的字符
 # FilePath: /arithmetic_oj/JianzhiOffer/50.py
@@ -10,14 +10,12 @@ import json
 
 class Solution:
     def firstUniqChar(self, s: str) -> str:
-        lst = []
+        dic = {}
         for c in s:
-            if c not in lst:
-                lst.append(c)
-            else:
-                lst.remove(c)
-        if lst: return lst[0]
-        else: return " "
+            dic[c] = c not in dic
+        for k, v in dic.items():
+            if v: return k
+        return " "
         
 
 def stringToString(input):

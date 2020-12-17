@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-02-22 07:55:31
-# LastEditTime: 2020-02-22 08:03:30
+# LastEditTime: 2020-03-20 08:11:41
 # LastEditors: ssdcxy
 # Description: 买卖股票的最佳时机含手续费
 # FilePath: /arithmetic_oj/LeetCode/P0714.py
@@ -11,15 +11,18 @@ from typing import List
 
 class Solution:
     def maxProfit(self, prices: List[int], fee: int) -> int:
+        if not prices: return 0
         n = len(prices)
-        dp = [[0, 0] for _ in range(n+1)]
-        prices.insert(0, 0)
-        dp[1][1] = -prices[1]
-        for i in range(2, n+1):
-            dp[i][0] = max(dp[i-1][0], dp[i-1][1]+prices[i]-fee)
-            dp[i][1] = max(dp[i-1][1], dp[i-1][0]-prices[i])
+        dp = [[0] * 2 for _ in range(n+1)]
+        for i in range(0, n):
+            if i == 0:
+                dp[i][0] = 0
+                dp[i][1] = -float('inf')
+                continue
+            dp[i][0] = max(dp[i-1][0], dp[i-1][1]+prices[i-1])
+            dp[i][1] = max(dp[i-1][1], dp[i-1][0]-prices[i-1]-fee)
         return dp[n][0]
-        
+            
 
 def stringToIntegerList(input):
     return json.loads(input)

@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-12 09:20:43
-# LastEditTime: 2020-03-12 10:13:36
+# LastEditTime: 2020-12-08 11:12:53
 # LastEditors: ssdcxy
 # Description: 数组中的逆序对
 # FilePath: /arithmetic_oj/JianzhiOffer/51.py
@@ -12,34 +12,35 @@ from typing import List
 class Solution:
     def reversePairs(self, nums: List[int]) -> int:
         def merge(start, mid, end):
-            nonlocal cnt
+            nonlocal count
+            left = start
+            right = mid + 1
             tmp = []
-            i, j = start, mid+1
-            while i <= mid and j <= end:
-                if nums[i] <= nums[j]:
-                    tmp.append(nums[i])
-                    i += 1
+            while left <= mid and right <= end:
+                if nums[left] <= nums[right]:
+                    tmp.append(nums[left])
+                    left += 1
                 else:
-                    cnt += mid - i + 1
-                    tmp.append(nums[j])
-                    j += 1
-            while i <= mid:
-                tmp.append(nums[i])
-                i += 1
-            while j <= mid:
-                tmp.append(nums[j])
-                j += 1
-            for i in range(len(tmp)):
-                nums[start+i] = tmp[i]
+                    count += mid - left + 1
+                    tmp.append(nums[right])
+                    right += 1
+            if left <= mid:
+                tmp.extend(nums[left:mid+1])
+            if right <= end:
+                tmp.extend(nums[right:end+1])
+            nums[start:start+len(tmp)] = tmp[:]
         def mergeSort(start, end):
             if start >= end: return
-            mid = (start + end) >> 1
+            mid = start + ((end - start) >> 1)
+            print(mid)
             mergeSort(start, mid)
             mergeSort(mid+1, end)
             merge(start, mid, end)
-        cnt = 0
-        mergeSort(0, len(nums)-1)
-        return cnt
+        if not nums : return 0
+        n = len(nums)
+        count = 0
+        mergeSort(0, n-1)
+        return count
             
 
 def stringToIntegerList(input):

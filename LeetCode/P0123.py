@@ -1,9 +1,9 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-02-22 08:04:30
-# LastEditTime: 2020-02-22 09:02:33
+# LastEditTime: 2020-12-14 12:44:55
 # LastEditors: ssdcxy
-# Description: 
+# Description: 买卖股票的最佳时机 III
 # FilePath: /arithmetic_oj/LeetCode/P0123.py
 
 import json
@@ -13,13 +13,25 @@ class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         if not prices: return 0
         n = len(prices)
-        dp = [[0]*n for _ in range(3)]
-        for i in range(1, 3):
-            pre_max = -prices[0]
-            for j in range(1, n):
-                pre_max = max(pre_max, dp[i-1][j-1]-prices[j])
-                dp[i][j] = max(dp[i][j-1], pre_max + prices[j])
-        return dp[-1][-1]
+        k = 2
+        if k > n//2:
+            profit = 0
+            for i in range(1, n):
+                diff = prices[i] - prices[i-1]
+                profit += (diff if diff > 0 else 0)
+            return profit
+        dp = [[[0]*2 for _ in range(k+1)] for _ in range(n+1)]
+        for i in range(n+1):
+            for j in range(k, 0, -1):
+                if i == 0:
+                    dp[i][j][0] = 0
+                    dp[i][j][1] = -float('inf')
+                    continue
+                dp[i][j][0] = max(dp[i-1][j][0], dp[i-1][j][1]+prices[i-1])
+                dp[i][j][1] = max(dp[i-1][j][1], dp[i-1][j-1][0]-prices[i-1])
+        return dp[n][k][0]
+
+
 
 def stringToIntegerList(input):
     return json.loads(input)
