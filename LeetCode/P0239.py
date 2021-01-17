@@ -1,36 +1,35 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
-# Date: 2020-03-12 14:09:17
-# LastEditTime: 2021-01-02 09:18:55
+# Date: 2021-01-02 09:19:13
+# LastEditTime: 2021-01-02 09:19:32
 # LastEditors: ssdcxy
-# Description: 滑动窗口的最大值
-# FilePath: /arithmetic_oj/JianzhiOffer/59-1.py
+# Description: 滑动窗口最大值
+# FilePath: /arithmetic_oj/LeetCode/P0239.py
 
 import json
 from typing import List
 
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        import collections
         if not nums: return []
+        if not k: return []
         n = len(nums)
-        q = collections.deque()
+        if k >= n: return [max(nums)]
+        import collections
+        deque = collections.deque()
         for i in range(k):
-            while q and nums[q[-1]] < nums[i]:
-                q.pop()
-            q.append(i)
-        res = [nums[q[0]]]
+            while deque and nums[deque[-1]] < nums[i]:
+                deque.pop()
+            deque.append(i)
+        res = [nums[deque[0]]]
         for i in range(k, n):
-            if q[0] <= i - k:
-                q.popleft()
-            while q and nums[q[-1]] < nums[i]:
-                q.pop()
-            q.append(i)
-            res.append(nums[q[0]])
+            if deque[0] == i-k:
+                deque.popleft()
+            while deque and nums[deque[-1]] < nums[i]:
+                deque.pop()
+            deque.append(i)
+            res.append(nums[deque[0]])
         return res
-        
-            
-        
 
 def stringToIntegerList(input):
     return json.loads(input)

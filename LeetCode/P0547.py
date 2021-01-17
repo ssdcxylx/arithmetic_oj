@@ -1,32 +1,31 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-02-20 15:04:19
-# LastEditTime: 2020-02-20 15:29:00
+# LastEditTime: 2021-01-11 09:54:22
 # LastEditors: ssdcxy
-# Description: 朋友圈
+# Description: 省份数量
 # FilePath: /arithmetic_oj/LeetCode/P0547.py
 
 import json
 from typing import List
 
 class Solution:
-    def findCircleNum(self, M: List[List[int]]) -> int:
-        def dfs(row):
-            for col in range(cols):
-                if col not in visited and M[row][col] == 1:
-                    visited.add(col)
-                    dfs(col)
-        if M is None or len(M) == 0:
-            return 0
-        count = 0
-        rows, cols = len(M), len(M[0])
-        visited = set()
-        for row in range(rows):
-            if row not in visited:
-                visited.add(row)
-                dfs(row)
-                count += 1
-        return count
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        def find(i):
+            if lst[i] != i:
+                lst[i] = find(lst[i])
+            return lst[i]
+        def union(i, j):
+            pi = find(i)
+            pj = find(j)
+            lst[pi] = lst[pj]
+        cities = len(isConnected)
+        lst = [i for i in range(cities)]
+        for i in range(cities):
+            for j in range(i+1, cities):
+                if isConnected[i][j]:
+                    union(i, j)
+        return sum([1 if lst[i] == i else 0 for i in range(cities)])
 
 
 def stringToInt2dArray(input):

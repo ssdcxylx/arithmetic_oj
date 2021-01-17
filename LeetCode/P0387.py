@@ -1,24 +1,19 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
-# Date: 2021-01-12 21:18:39
-# LastEditTime: 2021-01-12 21:19:12
+# Date: 2020-12-23 15:51:24
+# LastEditTime: 2020-12-23 15:51:32
 # LastEditors: ssdcxy
-# Description: 最后一个单词的长度
-# FilePath: /arithmetic_oj/LeetCode/P0058.py
+# Description: 字符串中的第一个唯一字符
+# FilePath: /arithmetic_oj/LeetCode/P0387.py
 
 class Solution:
-    def lengthOfLastWord(self, s: str) -> int:
-        if not s: return 0
-        n = len(s)
-        ans = 0
-        for i in range(n):
-            if s[i] == " ":
-                continue
-            if s[i] != " " and s[i-1] == " ":
-                ans = 1
-            else:
-                ans += 1
-        return ans
+    def firstUniqChar(self, s: str) -> int:
+        import collections
+        counter = collections.Counter(s)
+        for i, c in enumerate(s):
+            if counter[c] == 1:
+                return i
+        return -1
 
 def stringToString(input):
     return input[1:-1].decode('string_escape')
@@ -36,7 +31,7 @@ def main():
             line = next(lines)
             s = stringToString(line);
             
-            ret = Solution().lengthOfLastWord(s)
+            ret = Solution().firstUniqChar(s)
 
             out = str(ret);
             print(out)

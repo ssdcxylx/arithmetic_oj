@@ -59,6 +59,25 @@ def quick_sort(lst, left, right):
     return quick_sort(lst, left+1, high)
 
 
+def quick_sort(lst, low, high):
+    left, right = low, high
+    if left > right:
+        return lst
+    pivot = lst[left]
+    while left < right:
+        while left < right and lst[right] >= pivot:
+            right -= 1
+        lst[left] = lst[right]
+        while left < right and lst[left] <= pivot:
+            left += 1
+        lst[right] = lst[left]
+    lst[right] = pivot
+    quick_sort(lst, low, right-1)
+    quick_sort(lst, right+1, high)
+    return lst
+
+
+
 def merge(left, right):
     lst3 = []
     i, j = 0, 0
@@ -170,8 +189,8 @@ if __name__ == '__main__':
     lst = [12, 22, 17, 61, 11, 13, 51]
     k = 4
     # top_k(lst, 0, len(lst)-1, k)
-    # print(quick_sort(lst, 0, len(lst)-1))
+    print(quick_sort(lst, 0, len(lst)-1))
     # print(merge_sort(lst))
     # print(heap_sort(lst))
-    print(radix_sort(lst))
+    # print(radix_sort(lst))
 

@@ -1,32 +1,30 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2019-12-07 21:48:14
-# LastEditTime: 2019-12-10 20:25:32
+# LastEditTime: 2020-12-22 10:01:33
 # LastEditors: ssdcxy
 # Description: 反转字符串中的元音字母
 # FilePath: /arithmetic_oj/LeetCode/P0345.py
 
 
 class Solution:
-    def swap(self, s: str, i: int, j: int) -> str:
-        low = s[0:i] if i > 0 else ''
-        mid = s[i + 1:j] if j > i + 1 else ''
-        high = s[j + 1:] if j + 1 < len(s) else ''
-        return low + s[j] + mid + s[i] + high
 
     def reverseVowels(self, s: str) -> str:
-        yy = ['a', 'e', 'i', 'o', 'u', "A", "E", "I", "O", "U"]
-        low, high = 0, len(s) - 1
-        while low < high:
-            while low <= high and s[low] not in yy:
-                low += 1
-            while low <= high and s[high] not in yy:
-                high -= 1
-            if low < high and s[low] != s[high]:
-                s = self.swap(s, low, high)
-            low += 1
-            high -= 1
-        return s
+        if not s: return s
+        vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
+        left, right = 0, len(s)-1
+        s = list(s)
+        while left < right:
+            if s[left] in vowels:
+                if s[right] in vowels:
+                    s[left], s[right] = s[right], s[left]
+                    left += 1
+                right -= 1
+            else:
+                if s[right] not in vowels:
+                    right -= 1
+                left += 1 
+        return ''.join(s)
 
 
 def stringToString(input):

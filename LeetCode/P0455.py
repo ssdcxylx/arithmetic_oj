@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2019-12-09 20:41:22
-# LastEditTime: 2019-12-10 20:29:56
+# LastEditTime: 2021-01-01 12:06:33
 # LastEditors: ssdcxy
 # Description: 分发饼干
 # FilePath: /arithmetic_oj/LeetCode/P0455.py
@@ -13,18 +13,21 @@ from typing import List
 
 class Solution:
     def findContentChildren(self, g: List[int], s: List[int]) -> int:
-        g = sorted(g)
-        s = sorted(s)
+        if not g: return 0
+        if not s: return 0
+        g.sort()
+        s.sort()
         m, n = len(g), len(s)
-        res = 0
-        j = m - 1
-        for i in range(n-1, -1, -1):
-            while j >= 0 and g[j] > s[i]:
-                j -= 1
-            if j >= 0:
-                j -= 1
-                res += 1
-        return res
+        ans = 0
+        i, j = 0, 0
+        while i < m and j < n:
+            if g[i] <= s[j]:
+                ans += 1
+                i += 1
+                j += 1
+            else:
+                j += 1
+        return ans
 
 
 def stringToIntegerList(input):

@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-26 09:06:49
-# LastEditTime: 2020-03-26 09:23:56
+# LastEditTime: 2020-12-22 09:33:06
 # LastEditors: ssdcxy
 # Description: 二叉树的锯齿形层次遍历
 # FilePath: /arithmetic_oj/LeetCode/P0103.py
@@ -18,20 +18,18 @@ class TreeNode:
         
 class Solution:
     def zigzagLevelOrder(self, root: TreeNode) -> List[List[int]]:
-        def dfs(node, level):
+        def bfs(node, level):
             if level >= len(res):
-                res.append([node.val])
+                res.append([])
+            if level & 1:
+                res[level].insert(0, node.val)
             else:
-                if level % 2 == 0:
-                    res[level].append(node.val)
-                else:
-                    res[level].insert(0, node.val)
-            _tmp = level + 1
-            if node.left: dfs(node.left, _tmp)
-            if node.right: dfs(node.right, _tmp)
+                res[level].append(node.val)
+            if node.left: bfs(node.left, level+1)
+            if node.right: bfs(node.right, level+1)
         if not root: return []
         res = []
-        dfs(root, 0)
+        bfs(root, 0)
         return res
         
         

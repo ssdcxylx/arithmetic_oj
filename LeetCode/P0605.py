@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2019-12-10 21:03:40
-# LastEditTime: 2019-12-10 21:40:12
+# LastEditTime: 2021-01-01 09:27:05
 # LastEditors: ssdcxy
 # Description: 种花问题
 # FilePath: /arithmetic_oj/LeetCode/P0605.py
@@ -11,18 +11,23 @@ from typing import List
 
 class Solution:
     def canPlaceFlowers(self, flowerbed: List[int], n: int) -> bool:
+        if not n: return True
+        if not flowerbed: return False
+        length = len(flowerbed)
         count = 0
-        i, m = 0, len(flowerbed)
-        while i < m and count < n:
-            if flowerbed[i] == 1:
-                i += 1
+        cur = 0
+        while cur < length:
+            if flowerbed[cur]:
+                cur += 1
                 continue
-            pre = 0 if i == 0 else flowerbed[i-1]
-            next = 0 if i == m - 1 else flowerbed[i+1]
-            if pre == 0 and next == 0:
+            if cur > 0 and flowerbed[cur-1]:
+                cur += 1
+                continue
+            next = 0 if cur == length-1 else flowerbed[cur+1]
+            if not next:
                 count += 1
-                flowerbed[i] = 1
-            i += 1
+                flowerbed[cur] = 1
+            cur += 2
         return count >= n
 
 

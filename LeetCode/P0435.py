@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2019-12-09 20:57:52
-# LastEditTime: 2019-12-10 20:26:28
+# LastEditTime: 2020-12-31 20:35:22
 # LastEditors: ssdcxy
 # Description: 无重叠区间
 # FilePath: /arithmetic_oj/LeetCode/P0435.py
@@ -13,18 +13,19 @@ import json
 
 class Solution(object):
     def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
-        intervals = sorted(intervals, key=lambda i: i[-1])
         n = len(intervals)
-        i = 0
-        res = 0
-        while i + 1 < n:
-            if intervals[i][-1] <= intervals[i+1][0]:
-                i += 1
+        if n <= 1: return 0
+        intervals.sort()
+        ans = 0
+        p1, p2 = n-2, n-1
+        while p1 >= 0:
+            if intervals[p1][1] <= intervals[p2][0]:
+                p2 = p1
+                p1 -= 1
             else:
-                intervals[i + 1] = intervals[i]
-                i += 1
-                res += 1
-        return res
+                p1 -= 1
+                ans += 1
+        return ans
 
 
 def stringToInt2dArray(input):

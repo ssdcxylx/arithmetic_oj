@@ -92,9 +92,9 @@ def insert_sort(lst, first, last):
             j -= 1
 
 
-def simple_quick_sort(l):
-    quick_sort = lambda l: quick_sort([i for i in l[1:] if i < l[0]]) + [l[0]] + quick_sort([j for j in l[1:] if j >= l[0]]) if l else []
-    return quick_sort(l)
+def simple_quick_sort(lst):
+    quick_sort = lambda l: quick_sort([i for i in l[1:] if i <= l[0]]) + [l[0]] + quick_sort([j for j in l[1:] if j > l[0]]) if l else []
+    return quick_sort(lst)
 
 
 # 测试

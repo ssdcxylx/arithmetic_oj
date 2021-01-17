@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2020-03-22 07:57:32
-# LastEditTime: 2020-03-22 08:22:56
+# LastEditTime: 2020-12-19 09:59:11
 # LastEditors: ssdcxy
 # Description: 旋转图像
 # FilePath: /arithmetic_oj/LeetCode/P0048.py
@@ -11,14 +11,12 @@ from typing import List
 
 class Solution(object):
     def rotate(self, matrix):
+        if not matrix: return
         n = len(matrix)
-        for i in range(n//2 + 1):
-            for j in range(i, n//2 + 1):
-                tmp = matrix[n-1-j][i]
-                matrix[n-j-1][i] = matrix[n-1-i][n-1-j]
-                matrix[n-1-i][n-1-j] = matrix[j][n-1-i]
-                matrix[j][n-1-i] = matrix[i][j]
-                matrix[i][j] = tmp
+        for i in range(n//2+1):
+            for j in range(i, n-i-1):
+                matrix[i][j], matrix[j][n-i-1], matrix[n-i-1][n-j-1], matrix[n-j-1][i] =\
+                     matrix[n-j-1][i], matrix[i][j], matrix[j][n-i-1], matrix[n-i-1][n-j-1]
                 
 
 def stringToInt2dArray(input):

@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Author: ssdcxy
 # Date: 2019-12-08 20:57:04
-# LastEditTime: 2019-12-10 20:30:11
+# LastEditTime: 2021-01-14 10:40:53
 # LastEditors: ssdcxy
 # Description: 通过删除字母匹配到字典里最长单词
 # FilePath: /arithmetic_oj/LeetCode/P0524.py
@@ -13,21 +13,21 @@ import json
 
 class Solution(object):
     def findLongestWord(self, s: str, d: List[str]) -> str:
-        longest = ''
-        for i in d:
-            l1, l2 = len(s) - 1, len(i) - 1
-            if l1 < l2 or (l1 == l2 and s != i):
+        ans = ""
+        for string in d:
+            l1, l2 = len(s) - 1, len(string) - 1
+            if l1 < l2 or (l1 == l2 and string != s):
                 continue
             while l1 >= 0 and l2 >= 0:
-                if s[l1] == i[l2]:
+                if s[l1] == string[l2]:
                     l1 -= 1
                     l2 -= 1
                 else:
                     l1 -= 1
             if l2 == -1:
-                if len(i) > len(longest) or(len(i) == len(longest) and i < longest):
-                    longest = i
-        return longest
+                if len(ans) < len(string) or (len(ans) == len(string) and string < ans):
+                    ans = string
+        return ans
 
 
 def stringToString(input):
