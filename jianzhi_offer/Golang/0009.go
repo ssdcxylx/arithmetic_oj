@@ -1,3 +1,5 @@
+package main
+
 func numSubarrayProductLessThanK(nums []int, k int) int {
     ans := 0
     i, mult := 0, 1

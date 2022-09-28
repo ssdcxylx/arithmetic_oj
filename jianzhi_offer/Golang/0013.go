@@ -1,3 +1,5 @@
+package main
+
 type NumMatrix struct {
     sums [][]int
 }

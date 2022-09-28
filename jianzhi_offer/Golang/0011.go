@@ -1,3 +1,5 @@
+package main
+
 func findMaxLength(nums []int) (ans int) {
 	mp := map[int]int{0:-1}
 	counter := 0

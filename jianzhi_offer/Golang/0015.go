@@ -1,3 +1,5 @@
+package main
+
 func findAnagrams(s string, p string) (res []int) {
     flags := make([]int, 26)
     for _, c := range p {

@@ -1,3 +1,5 @@
+package main
+
 func maxProduct(words []string) int {
 	ans := 0
 	masks := map[int]int{}

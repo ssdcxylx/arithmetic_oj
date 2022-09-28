@@ -1,3 +1,5 @@
+package main
+
 func lengthOfLongestSubstring(s string) (ans int) {
 	mp := map[byte]bool{}
 	j, n := -1, len(s)

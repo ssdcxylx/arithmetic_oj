@@ -1,3 +1,5 @@
+package main
+
 func checkInclusion(s1 string, s2 string) bool {
     flags := make([]int, 26)
 	for _, c := range s1 {
